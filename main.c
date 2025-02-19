@@ -70,10 +70,10 @@ void free_logs() {
 // Ana program
 int main() {
     // Rastgele log mesajları oluştur ve bağlı listeye ekle
-    add_log(0, "Sistem acil durumda! Hizmet dýþý.");
-    add_log(3, "Veritabaný baðlantý hatasý.");
-    add_log(5, "Kullanýcý giriþi baþarýlý.");
-    add_log(7, "Debug: Yeni baðlantý isteði alýndý.");
+    add_log(0, "Sistem acil durumda! Hizmet disi.");
+    add_log(3, "Veritabani baglanti hatasi.");
+    add_log(5, "Kullanici girisi basarili.");
+    add_log(7, "Debug: Yeni baglanti istegi alindi.");
 
     // Tüm logları görüntüle
     display_logs();
