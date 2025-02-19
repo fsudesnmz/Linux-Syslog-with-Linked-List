@@ -1,4 +1,4 @@
-# Log Yönetim Sistemi
+# Bağlı Liste ile Syslog Uygulaması
 
 Bu proje, basit bir log yönetim sistemi örneğidir. C programlama dili kullanılarak geliştirilen bu sistem, log mesajlarını **tek yönlü bağlı liste (singly linked list)** yapısı kullanarak kaydeder ve görüntüler. Log mesajları, zaman damgası, önem seviyesi ve mesaj içeriği gibi bilgileri içerir.
 
@@ -45,24 +45,6 @@ Log mesajları, aşağıdaki önem seviyelerine sahip olabilir:
 - `5`: Notice (Bildirim)
 - `6`: Informational (Bilgilendirme)
 - `7`: Debug (Hata Ayıklama)
-
-## Kurulum
-
-1. Bu projeyi bilgisayarınıza klonlayın:
-   ```bash
-   git clone https://github.com/kullanici_adi/log-yonetim-sistemi.git
-   ```
-
-2. Proje dizinine gidin:
-   ```bash
-   cd log-yonetim-sistemi
-   ```
-
-3. Programı derleyin ve çalıştırın:
-   ```bash
-   gcc -o log_yonetim log_yonetim.c
-   ./log_yonetim
-   ```
 
 ## Katkıda Bulunma
 
