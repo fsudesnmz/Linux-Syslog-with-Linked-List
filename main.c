@@ -3,49 +3,49 @@
 #include <string.h>
 #include <time.h>
 
-// Log mesajı yapısı
+// Log mesajÄ± yapÄ±sÄ±
 typedef struct Log {
-    char timestamp[20];  // Zaman damgası
-    int severity;        // Önem seviyesi (0: Emergency, 1: Alert, ..., 7: Debug)
-    char message[256];   // Log mesajı
-    struct Log* next;    // Bir sonraki log mesajına işaretçi
+    char timestamp[20];  // Zaman damgasÄ±
+    int severity;        // Ã–nem seviyesi (0: Emergency, 1: Alert, ..., 7: Debug)
+    char message[256];   // Log mesajÄ±
+    struct Log* next;    // Bir sonraki log mesajÄ±na iÅŸaretÃ§i
 } Log;
 
-// Bağlı listenin başını tutacak global değişken
+// BaÄŸlÄ± listenin baÅŸÄ±nÄ± tutacak global deÄŸiÅŸken
 Log* head = NULL;
 
-// Yeni bir log mesajı ekleme fonksiyonu
+// Yeni bir log mesajÄ± ekleme fonksiyonu
 void add_log(int severity, const char* message) {
-    // Yeni log için bellek ayırma
+    // Yeni log iÃ§in bellek ayÄ±rma
     Log* new_log = (Log*)malloc(sizeof(Log));
     if (new_log == NULL) {
-        printf("Bellek hatası! Log eklenemedi.\n");
+        printf("Bellek hatasÃ½! Log eklenemedi.\n");
         return;
     }
 
-    // Zaman damgasını al
+    // Zaman damgasÄ±nÄ± al
     time_t now = time(NULL);
     strftime(new_log->timestamp, 20, "%Y-%m-%d %H:%M:%S", localtime(&now));
 
     // Log bilgilerini doldur
     new_log->severity = severity;
     strncpy(new_log->message, message, 255);
-    new_log->message[255] = '\0';  // Mesajın sonunu garanti altına al
+    new_log->message[255] = '\0';  // MesajÄ±n sonunu garanti altÄ±na al
 
-    // Yeni log'u baglı listenin başına ekle
+    // Yeni log'u baglÄ± listenin baÅŸÄ±na ekle
     new_log->next = head;
     head = new_log;
 }
 
-// Tüm logları görüntüleme fonksiyonu
+// TÃ¼m loglarÄ± gÃ¶rÃ¼ntÃ¼leme fonksiyonu
 void display_logs() {
     Log* current = head;
     if (current == NULL) {
-        printf("Gösterilecek log yok.\n");
+        printf("GÃ¶sterilecek log yok.\n");
         return;
     }
 
-    printf("\n--- Tüm Loglar ---\n");
+    printf("\n--- TÃ¼m Loglar ---\n");
     while (current != NULL) {
         printf("[%s] Severity: %d, Mesaj: %s\n", current->timestamp, current->severity, current->message);
         current = current->next;
@@ -53,7 +53,7 @@ void display_logs() {
     printf("------------------\n");
 }
 
-// Belleği temizleme fonksiyonu
+// BelleÄŸi temizleme fonksiyonu
 void free_logs() {
     Log* current = head;
     Log* next_log;
@@ -64,21 +64,21 @@ void free_logs() {
         current = next_log;
     }
 
-    head = NULL;  // Listenin başını sıfırla
+    head = NULL;  // Listenin baÅŸÄ±nÄ± sÄ±fÄ±rla
 }
 
 // Ana program
 int main() {
-    // Rastgele log mesajları oluştur ve bağlı listeye ekle
-    add_log(0, "Sistem acil durumda! Hizmet dışı.");
-    add_log(3, "Veritabanı bağlantı hatası.");
-    add_log(5, "Kullanıcı girişi başarılı.");
-    add_log(7, "Debug: Yeni bağlantı isteği alındı.");
+    // Rastgele log mesajlarÄ± oluÅŸtur ve baÄŸlÄ± listeye ekle
+    add_log(0, "Sistem acil durumda! Hizmet dÃ½Ã¾Ã½.");
+    add_log(3, "VeritabanÃ½ baÃ°lantÃ½ hatasÃ½.");
+    add_log(5, "KullanÃ½cÃ½ giriÃ¾i baÃ¾arÃ½lÃ½.");
+    add_log(7, "Debug: Yeni baÃ°lantÃ½ isteÃ°i alÃ½ndÃ½.");
 
-    // Tüm logları görüntüle
+    // TÃ¼m loglarÄ± gÃ¶rÃ¼ntÃ¼le
     display_logs();
 
-    // Belleği temizle
+    // BelleÄŸi temizle
     free_logs();
 
     return 0;
